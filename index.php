@@ -53,7 +53,7 @@ $displayed = array();
 if ($_GET['noplots']) {
     print "Plots will not be displayed.\n";
 } else {
-    $other_exts = array('log.png', 'lin.pdf', 'lin.cxx', 'lin.eps', 'lin.root', 'lin.txt', 'log.pdf', 'log.cxx', 'log.eps', 'log.root', 'log.txt');
+    $other_exts = array('log.png', 'lin.pdf', 'lin.cxx', 'lin.eps', 'lin.root', 'lin.txt', 'lin.C', 'log.pdf', 'log.cxx', 'log.eps', 'log.root', 'log.txt', 'log.C');
     $filenames = glob("*lin.png"); sort($filenames);
     $used = array();
     foreach ($filenames as $filename) {
@@ -62,7 +62,7 @@ if ($_GET['noplots']) {
         array_push($used,$filename);
         print "<div class='pic'>\n";
         print "<h3><a href=\"$filename\">$filename</a></h3>";
-        print "<a href=\"$filename\"><img src=\"$filename\" style=\"border: none; width: 350px; \"></a>";
+        print "<a href=\"$filename\"><img src=\"$filename\" style=\"border: none; width: 360px; \"></a>";
         $others = array();
         foreach ($other_exts as $ex) {
             $other_filename = str_replace('lin.png', $ex, $filename);
@@ -75,7 +75,7 @@ if ($_GET['noplots']) {
         if ($others) print "<p>Also as ".implode(', ',$others)."</p>";
         print "</div>";
     }
-    $other_exts = array('.pdf', '.cxx', '.eps', '.root', '.txt');
+    $other_exts = array('.pdf', '.cxx', '.eps', '.root', '.txt', '.C');
     $filenames = glob("*.png"); sort($filenames);
     foreach ($filenames as $filename) {
         if (isset($_GET['match']) && !fnmatch('*'.$_GET['match'].'*', $filename)) continue;
@@ -83,7 +83,7 @@ if ($_GET['noplots']) {
         array_push($displayed, $filename);
         print "<div class='pic'>\n";
         print "<h3><a href=\"$filename\">$filename</a></h3>";
-        print "<a href=\"$filename\"><img src=\"$filename\" style=\"border: none; width: 350px; \"></a>";
+        print "<a href=\"$filename\"><img src=\"$filename\" style=\"border: none; width: 360px; \"></a>";
         $others = array();
         foreach ($other_exts as $ex) {
             $other_filename = str_replace('.png', $ex, $filename);
